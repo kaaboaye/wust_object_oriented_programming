@@ -1,6 +1,8 @@
 {
   "files.associations": {
     "cinttypes": "c",
-    "inttypes.h": "c"
-  }
+    "inttypes.h": "c",
+    "prime.h": "c"
+  },
+  "cSpell.words": ["urange"]
 }
