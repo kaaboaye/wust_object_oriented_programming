@@ -48,11 +48,13 @@ Matrix *matrix_mul(const Matrix *matrix1, const Matrix *matrix2)
   {
     for (uint64_t col2 = 0; col2 < matrix2->columns; ++col2)
     {
+      int64_t sum = 0;
       for (uint64_t col1 = 0; col1 < matrix1->columns; ++col1)
       {
-        matrix_cell_pointer(result, row1, col2)[0] +=
+        sum +=
             matrix_cell(matrix1, row1, col1) * matrix_cell(matrix2, col1, col2);
       }
+      matrix_cell_pointer(result, row1, col2)[0] = sum;
     }
   }
 
