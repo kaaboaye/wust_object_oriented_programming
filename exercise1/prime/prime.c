@@ -3,27 +3,6 @@
 
 #include "prime.h"
 
-Number *prime_add(Number *prime_numbers)
-{
-  Number *tail = prime_numbers;
-  while (tail->next)
-  {
-    tail = tail->next;
-  }
-
-  Number *next = malloc(sizeof(Number));
-  next->num = tail->num + 1;
-  next->next = 0;
-
-  while (!is_prime(prime_numbers, next->num))
-  {
-    ++next->num;
-  }
-
-  tail->next = next;
-  return next;
-}
-
 Number *prime_next(Number *prime_numbers, Number *number)
 {
   if (number->next)
@@ -56,8 +35,6 @@ bool is_prime(Number *prime_numbers, uint64_t num)
 
   return true;
 }
-
-#include <stdio.h>
 
 Slice primes_in_range(Number *prime_numbers, uint64_t beg, uint64_t end)
 {
