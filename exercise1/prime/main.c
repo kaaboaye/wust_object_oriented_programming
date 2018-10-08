@@ -5,6 +5,7 @@
 */
 
 #include <stdlib.h>
+#include <stdint.h>
 
 #include "prime.h"
 #include "cli.h"
@@ -15,8 +16,12 @@ int main(int argc, char const *argv[])
   prime_numbers->num = 2;
   prime_numbers->next = 0;
 
-  Slice result = primes_in_range(prime_numbers, 5, 12);
-  print_numbers(prime_numbers);
-  print_slice(result);
+  while (true)
+  {
+    uint64_t *range = read_range();
+    Slice result = primes_in_range(prime_numbers, range[0], range[1]);
+    print_slice(result);
+  }
+
   return 0;
 }
