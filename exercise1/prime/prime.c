@@ -36,22 +36,22 @@ bool is_prime(Number *prime_numbers, uint64_t num)
   return true;
 }
 
-Slice primes_in_range(Number *prime_numbers, uint64_t beg, uint64_t end)
+Slice primes_in_range(Number *prime_numbers, uint64_t *range)
 {
   Number *result;
   for (
       result = prime_numbers;
-      result->num < beg;
+      result->num < range[0];
       result = prime_next(prime_numbers, result))
     ;
 
-  if (result->num == end)
+  if (result->num == range[1])
   {
     Slice s = {result, result};
     return s;
   }
 
-  if (result->num > end)
+  if (result->num > range[1])
   {
     Slice s = {0, 0};
     return s;
@@ -59,11 +59,11 @@ Slice primes_in_range(Number *prime_numbers, uint64_t beg, uint64_t end)
 
   Number *tail = result;
 
-  while (tail->num < end)
+  while (tail->num < range[1])
   {
     Number *next_number = prime_next(prime_numbers, tail);
 
-    if (next_number->num > end)
+    if (next_number->num > range[1])
     {
       Slice s = {result, tail->next};
       return s;

@@ -19,7 +19,7 @@ int main(int argc, char const *argv[])
   while (true)
   {
     uint64_t *range = read_range();
-    Slice result = primes_in_range(prime_numbers, range[0], range[1]);
+    Slice result = primes_in_range(prime_numbers, range);
     print_slice(result);
   }
 

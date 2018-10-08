@@ -18,6 +18,6 @@ typedef struct
 
 Number *prime_next(Number *prime_numbers, Number *number);
 bool is_prime(Number *prime_numbers, uint64_t num);
-Slice primes_in_range(Number *prime_numbers, uint64_t beg, uint64_t end);
+Slice primes_in_range(Number *prime_numbers, uint64_t *range);
 
 #endif
