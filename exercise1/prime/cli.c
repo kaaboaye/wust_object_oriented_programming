@@ -16,7 +16,7 @@ void print_slice(Slice slice)
 {
   for (
       Number *number = slice.beg;
-      number && number->num < slice.end->num;
+      number != slice.end;
       number = number->next)
   {
     printf("%llu ", number->num);

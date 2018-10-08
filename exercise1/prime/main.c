@@ -15,8 +15,8 @@ int main(int argc, char const *argv[])
   prime_numbers->num = 2;
   prime_numbers->next = 0;
 
-  Slice result = primes_in_range(prime_numbers, 1000000, 1000100);
-  // print_numbers(prime_numbers);
+  Slice result = primes_in_range(prime_numbers, 5, 12);
+  print_numbers(prime_numbers);
   print_slice(result);
   return 0;
 }

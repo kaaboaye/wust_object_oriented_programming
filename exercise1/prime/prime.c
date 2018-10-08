@@ -65,7 +65,7 @@ Slice primes_in_range(Number *prime_numbers, uint64_t beg, uint64_t end)
 
     if (next_number->num > end)
     {
-      Slice s = {result, tail};
+      Slice s = {result, tail->next};
       return s;
     }
 
@@ -73,6 +73,6 @@ Slice primes_in_range(Number *prime_numbers, uint64_t beg, uint64_t end)
     tail = next_number;
   }
 
-  Slice s = {result, tail};
+  Slice s = {result, tail->next};
   return s;
 }
