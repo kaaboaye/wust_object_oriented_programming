@@ -2,8 +2,6 @@
 #include <iostream>
 #include <string>
 
-#define NOT_AN_ANGLE 101
-
 class Complex
 {
 public:
