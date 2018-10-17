@@ -1,0 +1,82 @@
+complex.cpp:65:14: error: invalid operands to binary expression ('std::__1::basic_istream<char>' and 'const char *')
+  in >> real >> " + " >> imaginary >> " i";
+  ~~~~~~~~~~ ^  ~~~~~
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:220:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'std::__1::basic_istream<char> &(*)(std::__1::basic_istream<char> &)' for 1st argument
+    basic_istream& operator>>(basic_istream& (*__pf)(basic_istream&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:224:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'basic_ios<std::__1::basic_istream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_istream<char, std::__1::char_traits<char> >::traits_type> &(*)(basic_ios<std::__1::basic_istream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_istream<char, std::__1::char_traits<char> >::traits_type> &)' (aka 'basic_ios<char, std::__1::char_traits<char> > &(*)(basic_ios<char, std::__1::char_traits<char> > &)') for 1st argument
+    basic_istream& operator>>(basic_ios<char_type, traits_type>&
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:229:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'std::__1::ios_base &(*)(std::__1::ios_base &)' for 1st argument
+    basic_istream& operator>>(ios_base& (*__pf)(ios_base&))
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:232:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'basic_streambuf<std::__1::basic_istream<char, std::__1::char_traits<char> >::char_type, std::__1::basic_istream<char, std::__1::char_traits<char> >::traits_type> *' (aka 'basic_streambuf<char, std::__1::char_traits<char> > *') for 1st argument
+    basic_istream& operator>>(basic_streambuf<char_type, traits_type>* __sb);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:233:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'bool &' for 1st argument
+    basic_istream& operator>>(bool& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:234:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'short &' for 1st argument
+    basic_istream& operator>>(short& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:235:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'unsigned short &' for 1st argument
+    basic_istream& operator>>(unsigned short& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:236:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'int &' for 1st argument
+    basic_istream& operator>>(int& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:237:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'unsigned int &' for 1st argument
+    basic_istream& operator>>(unsigned int& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:238:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'long &' for 1st argument
+    basic_istream& operator>>(long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:239:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'unsigned long &' for 1st argument
+    basic_istream& operator>>(unsigned long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:240:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'long long &' for 1st argument
+    basic_istream& operator>>(long long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:241:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'unsigned long long &' for 1st argument
+    basic_istream& operator>>(unsigned long long& __n);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:242:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'float &' for 1st argument
+    basic_istream& operator>>(float& __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:243:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'double &' for 1st argument
+    basic_istream& operator>>(double& __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:244:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'long double &' for 1st argument
+    basic_istream& operator>>(long double& __f);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:245:20: note: candidate function not viable: no known conversion from 'const char [4]' to 'void *&' for 1st argument
+    basic_istream& operator>>(void*& __p);
+                   ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:789:1: note: candidate function not viable: no known conversion from 'const char [4]' to 'unsigned char *' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, unsigned char* __s)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:797:1: note: candidate function not viable: no known conversion from 'const char [4]' to 'signed char *' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, signed char* __s)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:832:1: note: candidate function not viable: no known conversion from 'const char [4]' to 'unsigned char &' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, unsigned char& __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:840:1: note: candidate function not viable: no known conversion from 'const char [4]' to 'signed char &' for 2nd argument
+operator>>(basic_istream<char, _Traits>& __is, signed char& __c)
+^
+complex.cpp:60:15: note: candidate function not viable: no known conversion from 'const char [4]' to 'Complex &' for 2nd argument
+std::istream &operator>>(std::istream &in, Complex &a)
+              ^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:740:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'const char')
+operator>>(basic_istream<_CharT, _Traits>& __is, _CharT* __s)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:804:1: note: candidate template ignored: deduced conflicting types for parameter '_CharT' ('char' vs. 'char const[4]')
+operator>>(basic_istream<_CharT, _Traits>& __is, _CharT& __c)
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:1506:1: note: candidate template ignored: could not match 'basic_string<type-parameter-0-0, type-parameter-0-1, type-parameter-0-2>' against 'char const[4]'
+operator>>(basic_istream<_CharT, _Traits>& __is,
+^
+/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1/istream:1638:1: note: candidate template ignored: could not match 'bitset<_Size>' against 'char const[4]'
+operator>>(basic_istream<_CharT, _Traits>& __is, bitset<_Size>& __x)
+^
+1 error generated.

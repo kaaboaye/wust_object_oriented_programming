@@ -123,7 +123,7 @@ int main()
 {
   Shop shop;
 
-  while (true)
+  for (;;)
   {
     shop.read_tsv_line();
   }
