@@ -2,7 +2,8 @@
   "files.associations": {
     "cinttypes": "c",
     "inttypes.h": "c",
-    "prime.h": "c"
+    "prime.h": "c",
+    "sstream": "cpp"
   },
   "cSpell.words": ["urange"]
 }
