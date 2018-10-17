@@ -99,9 +99,10 @@ int main(int argc, char const *argv[])
 
     Date d = Date(year, mouth, day);
 
+    std::cout << "leap_year: " << (d.leap_year() ? "true" : "false") << std::endl;
     std::cout << "days_in_mouth: " << d.days_in_mouth() << std::endl;
     std::cout << "days_from_1jan: " << d.days_from_1jan() << std::endl;
-    std::cout << "Unix time: " << d.unix() << std::endl;
+    std::cout << "unix: " << d.unix() << std::endl;
   }
 
   return 0;
