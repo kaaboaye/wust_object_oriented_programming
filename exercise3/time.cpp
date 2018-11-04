@@ -1,5 +1,8 @@
 #include <stdint.h>
 #include <iostream>
+#include <sstream>
+#include <string>
+#include <cstdlib>
 
 class Time
 {
@@ -12,6 +15,28 @@ public:
   }
 
   int64_t unix() { return _unix; }
+
+  int64_t hour()
+  {
+    return (_unix / (60 * 60)) % 24;
+  }
+
+  int64_t minute()
+  {
+    return (_unix / 60) % 60;
+  }
+
+  int64_t second()
+  {
+    return _unix % 60;
+  }
+
+  std::string time()
+  {
+    std::stringstream ss;
+    ss << (hour() < 10 ? "0" : "") << hour() << ":" << (minute() < 10 ? "0" : "") << minute() << "." << second();
+    return ss.str();
+  }
 };
 
 Time operator+(Time a, Time b)
@@ -49,7 +74,8 @@ int main(int argc, char const *argv[])
     std::cout
         << "t: " << t << std::endl
         << "t + t: " << t + t << std::endl
-        << "t - t: " << t - t << std::endl;
+        << "t - t: " << t - t << std::endl
+        << "time: " << t.time() << std::endl;
   }
   return 0;
 }

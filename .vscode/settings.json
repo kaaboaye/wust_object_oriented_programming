@@ -3,7 +3,8 @@
     "cinttypes": "c",
     "inttypes.h": "c",
     "prime.h": "c",
-    "sstream": "cpp"
+    "sstream": "cpp",
+    "iosfwd": "cpp"
   },
   "cSpell.words": ["urange"]
 }
