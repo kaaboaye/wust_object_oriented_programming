@@ -4,7 +4,9 @@
     "inttypes.h": "c",
     "prime.h": "c",
     "sstream": "cpp",
-    "iosfwd": "cpp"
+    "iosfwd": "cpp",
+    "iostream": "cpp",
+    "type.h": "c"
   },
   "cSpell.words": ["urange"]
 }
