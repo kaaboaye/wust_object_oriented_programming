@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include <unordered_map>
 #include <unordered_set>
 
@@ -47,7 +48,7 @@ static std::unordered_set<__action__> __actions_depend_vehicle__ = {
     __does__,
 };
 
-static __action__ get_action(std::string str)
+static __action__ cast_action(std::string str)
 {
   auto action = __action_strings__.find(str);
   return action != __action_strings__.end() ? action->second : __undefined__;
@@ -61,7 +62,7 @@ struct __vehicle_options__
   double burning;
 };
 
-static __vehicle_options__ collect_vehicle_options()
+static __vehicle_options__ read_vehicle_options()
 {
   double weight;
   double speed;
@@ -109,7 +110,7 @@ static void usage()
 
 void cli_inh()
 {
-  Vehicle *vehicle;
+  Vehicle *vehicle = nullptr;
 
   usage();
 
@@ -119,7 +120,7 @@ void cli_inh()
 
     std::string str_action;
     std::cin >> str_action;
-    __action__ action = get_action(str_action);
+    __action__ action = cast_action(str_action);
 
     if (!vehicle && __actions_depend_vehicle__.find(action) != __actions_depend_vehicle__.end())
     {
@@ -132,7 +133,7 @@ void cli_inh()
     case __create_car__:
     {
       std::cout << "Creating car…" << std::endl;
-      __vehicle_options__ opts = collect_vehicle_options();
+      __vehicle_options__ opts = read_vehicle_options();
 
       if (vehicle)
       {
@@ -145,7 +146,7 @@ void cli_inh()
     case __create_bus__:
     {
       std::cout << "Creating bus…" << std::endl;
-      __vehicle_options__ opts = collect_vehicle_options();
+      __vehicle_options__ opts = read_vehicle_options();
 
       if (vehicle)
       {
@@ -199,6 +200,12 @@ void cli_inh()
 
     case __exit__:
       std::cout << std::endl;
+
+      if (vehicle)
+      {
+        free(vehicle);
+      }
+
       return;
 
     case __help__:
