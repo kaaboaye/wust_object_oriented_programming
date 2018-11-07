@@ -116,7 +116,7 @@ void cli_inh()
 
   for (;;)
   {
-    std::cout << "> ";
+    std::cout << "inheritance > ";
 
     std::string str_action;
     std::cin >> str_action;

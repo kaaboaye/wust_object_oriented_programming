@@ -1,3 +1,5 @@
+#include <stdlib.h>
+
 #include "car_agr.h"
 
 CarAgr::CarAgr(double weight, double speed, double milage, double burning)
@@ -8,4 +10,9 @@ CarAgr::CarAgr(double weight, double speed, double milage, double burning)
 const char *CarAgr::does()
 {
   return "beep beep";
+}
+
+CarAgr::~CarAgr()
+{
+  free(vehicle);
 }

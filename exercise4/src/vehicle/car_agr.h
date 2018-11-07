@@ -9,6 +9,7 @@ public:
   Vehicle *vehicle;
 
   CarAgr(double weight, double speed, double milage, double burning);
+  ~CarAgr();
 
   const char *does();
 };

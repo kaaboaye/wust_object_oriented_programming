@@ -7,6 +7,7 @@ class BusAgr
 {
 public:
   Vehicle *vehicle;
+  ~BusAgr();
 
   BusAgr(double weight, double speed, double milage, double burning);
 

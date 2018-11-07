@@ -126,7 +126,7 @@ void cli_arg()
 
   for (;;)
   {
-    std::cout << "> ";
+    std::cout << "aggregate > ";
 
     std::string str;
     std::cin >> str;
