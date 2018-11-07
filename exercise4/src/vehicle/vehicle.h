@@ -20,6 +20,8 @@ public:
   double milage();
 
   double burning();
+
+  virtual const char *does();
 };
 
 #endif

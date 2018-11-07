@@ -37,3 +37,5 @@ double Vehicle::burning()
 {
   return _burning;
 }
+
+const char *Vehicle::does() { return "beep beep"; }

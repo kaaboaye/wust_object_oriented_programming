@@ -1,3 +1,3 @@
 #! /usr/bin/env bash
 
-g++ `find src -type f -name *.cpp`
+g++ -std=c++17 `find src -type f -name *.cpp`
