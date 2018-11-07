@@ -197,7 +197,7 @@ void cli_arg()
         break;
 
       case __get_burning__:
-        std::cout << "Car burning:" << car->vehicle->burning() << std::endl;
+        std::cout << "Car burning: " << car->vehicle->burning() << std::endl;
         break;
 
       case __does__:
@@ -274,7 +274,7 @@ void cli_arg()
         break;
 
       case __get_burning__:
-        std::cout << "Bus burning:" << bus->vehicle->burning() << std::endl;
+        std::cout << "Bus burning: " << bus->vehicle->burning() << std::endl;
         break;
 
       case __does__:

@@ -191,7 +191,7 @@ void cli_inh()
       break;
 
     case __get_burning__:
-      std::cout << "Vehicle burning:" << vehicle->burning() << std::endl;
+      std::cout << "Vehicle burning: " << vehicle->burning() << std::endl;
       break;
 
     case __does__:
