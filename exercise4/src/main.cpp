@@ -1,8 +1,8 @@
 #include <iostream>
 #include <stdint.h>
 
-#include "cli/agr.h"
-#include "cli/inh.h"
+#include "cli/agr/agr.h"
+#include "cli/inh/inh.h"
 
 int main(int argc, char const *argv[])
 {
@@ -23,11 +23,11 @@ int main(int argc, char const *argv[])
     switch (mode)
     {
     case 'i':
-      cli_inh();
+      cli::inh::main();
       break;
 
     case 'a':
-      cli_arg();
+      cli::agr::main();
       break;
 
     case 'e':

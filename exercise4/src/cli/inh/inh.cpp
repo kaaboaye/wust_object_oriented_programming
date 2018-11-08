@@ -4,90 +4,16 @@
 #include <unordered_set>
 
 #include "inh.h"
-#include "../vehicle/vehicle.h"
-#include "../vehicle/car_inh.h"
-#include "../vehicle/bus_inh.h"
+#include "action.h"
+#include "../vehicle_options.h"
+#include "../../lib/vehicle/vehicle.h"
+#include "../../lib/vehicle/car_inh.h"
+#include "../../lib/vehicle/bus_inh.h"
 
-enum __action__
+namespace cli
 {
-  __create_car__,
-  __create_bus__,
-  __get_weight__,
-  __set_speed__,
-  __get_speed__,
-  __set_milage__,
-  __get_milage__,
-  __get_burning__,
-  __does__,
-  __exit__,
-  __help__,
-  __undefined__
-};
-
-static std::unordered_map<std::string, __action__> __action_strings__ = {
-    {"create_car", __create_car__},
-    {"create_bus", __create_bus__},
-    {"get_weight", __get_weight__},
-    {"set_speed", __set_speed__},
-    {"get_speed", __get_speed__},
-    {"set_milage", __set_milage__},
-    {"get_milage", __get_milage__},
-    {"get_burning", __get_burning__},
-    {"does", __does__},
-    {"exit", __exit__},
-    {"help", __help__},
-};
-
-static std::unordered_set<__action__> __actions_depend_vehicle__ = {
-    __get_weight__,
-    __set_speed__,
-    __get_speed__,
-    __set_milage__,
-    __get_milage__,
-    __get_burning__,
-    __does__,
-};
-
-static __action__ cast_action(std::string str)
+namespace inh
 {
-  auto action = __action_strings__.find(str);
-  return action != __action_strings__.end() ? action->second : __undefined__;
-}
-
-struct __vehicle_options__
-{
-  double weight;
-  double speed;
-  double milage;
-  double burning;
-};
-
-static __vehicle_options__ read_vehicle_options()
-{
-  double weight;
-  double speed;
-  double milage;
-  double burning;
-
-  std::cout << "Provide vehicle weight: ";
-  std::cin >> weight;
-
-  std::cout << "Provide vehicle speed: ";
-  std::cin >> speed;
-
-  std::cout << "Provide vehicle milage: ";
-  std::cin >> milage;
-
-  std::cout << "Provide vehicle burning: ";
-  std::cin >> burning;
-
-  return __vehicle_options__{
-      weight,
-      speed,
-      milage,
-      burning,
-  };
-}
 
 static void usage()
 {
@@ -108,7 +34,7 @@ static void usage()
             << std::endl;
 }
 
-void cli_inh()
+void main()
 {
   Vehicle *vehicle = nullptr;
 
@@ -120,9 +46,9 @@ void cli_inh()
 
     std::string str_action;
     std::cin >> str_action;
-    __action__ action = cast_action(str_action);
+    Action action = cast_action(str_action);
 
-    if (!vehicle && __actions_depend_vehicle__.find(action) != __actions_depend_vehicle__.end())
+    if (!vehicle && action_depend_on_vehicle(action))
     {
       std::cout << "In order to use this command you need to create a vehicle ~grrr~" << std::endl;
       continue;
@@ -130,10 +56,10 @@ void cli_inh()
 
     switch (action)
     {
-    case __create_car__:
+    case Action_create_car:
     {
       std::cout << "Creating car…" << std::endl;
-      __vehicle_options__ opts = read_vehicle_options();
+      VehicleOptions opts = read_vehicle_options();
 
       if (vehicle)
       {
@@ -143,10 +69,10 @@ void cli_inh()
       break;
     }
 
-    case __create_bus__:
+    case Action_create_bus:
     {
       std::cout << "Creating bus…" << std::endl;
-      __vehicle_options__ opts = read_vehicle_options();
+      VehicleOptions opts = read_vehicle_options();
 
       if (vehicle)
       {
@@ -156,11 +82,11 @@ void cli_inh()
       break;
     }
 
-    case __get_weight__:
+    case Action_get_weight:
       std::cout << "Vehicle weight: " << vehicle->weight() << std::endl;
       break;
 
-    case __set_speed__:
+    case Action_set_speed:
     {
       double speed;
 
@@ -171,11 +97,11 @@ void cli_inh()
       break;
     }
 
-    case __get_speed__:
+    case Action_get_speed:
       std::cout << "Vehicle speed: " << vehicle->speed() << std::endl;
       break;
 
-    case __set_milage__:
+    case Action_set_milage:
     {
       double milage;
 
@@ -186,19 +112,19 @@ void cli_inh()
       break;
     }
 
-    case __get_milage__:
+    case Action_get_milage:
       std::cout << "Vehicle milage: " << vehicle->milage() << std::endl;
       break;
 
-    case __get_burning__:
+    case Action_get_burning:
       std::cout << "Vehicle burning: " << vehicle->burning() << std::endl;
       break;
 
-    case __does__:
+    case Action_does:
       std::cout << "This vehicle does: " << vehicle->does() << std::endl;
       break;
 
-    case __exit__:
+    case Action_exit:
       std::cout << std::endl;
 
       if (vehicle)
@@ -208,13 +134,15 @@ void cli_inh()
 
       return;
 
-    case __help__:
+    case Action_help:
       usage();
       break;
 
-    case __undefined__:
+    case Action_undefined:
       std::cout << "Unknown action :(" << std::endl;
       break;
     }
   }
 }
+} // namespace inh
+} // namespace cli
