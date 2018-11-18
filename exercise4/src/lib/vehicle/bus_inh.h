@@ -3,9 +3,8 @@
 
 #include "vehicle.h"
 
-class BusInh : public Vehicle
-{
-public:
+class BusInh : public Vehicle {
+ public:
   BusInh(double weight, double speed, double milage, double burning);
 
   const char *does();

@@ -3,11 +3,9 @@
 
 #include <iostream>
 
-namespace cli
-{
+namespace cli {
 
-struct VehicleOptions
-{
+struct VehicleOptions {
   double weight;
   double speed;
   double milage;
@@ -15,6 +13,6 @@ struct VehicleOptions
 };
 
 VehicleOptions read_vehicle_options();
-} // namespace cli
+}  // namespace cli
 
 #endif

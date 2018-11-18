@@ -4,18 +4,16 @@
 #include <stdint.h>
 #include <string>
 
-namespace Numbers
-{
-class Arabian
-{
-protected:
+namespace Numbers {
+class Arabian {
+ protected:
   int64_t _num;
 
-public:
+ public:
   Arabian();
   Arabian(int64_t num);
   std::string to_string() const;
 };
-} // namespace Numbers
+}  // namespace Numbers
 
 #endif

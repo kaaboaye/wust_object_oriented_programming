@@ -1,14 +1,13 @@
 #ifndef VEHICLE_H
 #define VEHICLE_H
 
-class Vehicle
-{
+class Vehicle {
   double _weight;
   double _speed;
   double _milage;
   double _burning;
 
-public:
+ public:
   Vehicle(double weight, double speed, double milage, double burning);
 
   double weight();

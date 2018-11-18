@@ -3,12 +3,9 @@
 
 #include <string>
 
-namespace cli
-{
-namespace agr
-{
-enum VehicleAction
-{
+namespace cli {
+namespace agr {
+enum VehicleAction {
   VehicleAction_create,
   VehicleAction_get_weight,
   VehicleAction_set_speed,
@@ -21,7 +18,7 @@ enum VehicleAction
 };
 
 VehicleAction cast_vehicle_action(const std::string &str);
-} // namespace agr
-} // namespace cli
+}  // namespace agr
+}  // namespace cli
 
 #endif

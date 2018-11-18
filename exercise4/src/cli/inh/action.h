@@ -3,12 +3,9 @@
 
 #include <string>
 
-namespace cli
-{
-namespace inh
-{
-enum Action
-{
+namespace cli {
+namespace inh {
+enum Action {
   Action_create_car,
   Action_create_bus,
   Action_get_weight,
@@ -25,7 +22,7 @@ enum Action
 
 Action cast_action(const std::string &str);
 bool action_depend_on_vehicle(Action action);
-} // namespace inh
-} // namespace cli
+}  // namespace inh
+}  // namespace cli
 
 #endif

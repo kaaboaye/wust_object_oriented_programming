@@ -3,19 +3,17 @@
 
 #include "rectangle.h"
 
-namespace Shapes
-{
-class Cuboid : Rectangle
-{
+namespace Shapes {
+class Cuboid : Rectangle {
   double _h;
 
-public:
+ public:
   Cuboid();
   Cuboid(double a, double b, double h);
 
   double volume() const;
   double diagonal() const;
 };
-} // namespace Shapes
+}  // namespace Shapes
 
 #endif

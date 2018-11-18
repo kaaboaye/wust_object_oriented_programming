@@ -3,13 +3,10 @@
 
 #include <string>
 
-namespace cli
-{
-namespace agr
-{
+namespace cli {
+namespace agr {
 
-enum VehicleOrAction
-{
+enum VehicleOrAction {
   VehicleOrAction_bus,
   VehicleOrAction_car,
   VehicleOrAction_exit,
@@ -19,7 +16,7 @@ enum VehicleOrAction
 
 VehicleOrAction cast_vehicle_or_action(const std::string &str);
 
-} // namespace agr
-} // namespace cli
+}  // namespace agr
+}  // namespace cli
 
 #endif

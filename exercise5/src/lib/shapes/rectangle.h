@@ -1,20 +1,18 @@
 #ifndef SHAPES_RECTANGLE_H
 #define SHAPES_RECTANGLE_H
 
-namespace Shapes
-{
-class Rectangle
-{
+namespace Shapes {
+class Rectangle {
   double _a;
   double _b;
 
-public:
+ public:
   Rectangle();
   Rectangle(double _a, double _b);
 
   double area() const;
   double diagonal() const;
 };
-} // namespace Shapes
+}  // namespace Shapes
 
 #endif

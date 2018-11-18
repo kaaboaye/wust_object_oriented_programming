@@ -1,17 +1,15 @@
 #ifndef PRIME_H
 #define PRIME_H
 
-#include <stdint.h>
 #include <stdbool.h>
+#include <stdint.h>
 
-typedef struct _number_elem
-{
+typedef struct _number_elem {
   uint64_t num;
   struct _number_elem *next;
 } Number;
 
-typedef struct
-{
+typedef struct {
   Number *beg;
   Number *end;
 } Slice;

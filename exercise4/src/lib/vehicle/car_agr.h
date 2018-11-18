@@ -3,9 +3,8 @@
 
 #include "vehicle.h"
 
-class CarAgr
-{
-public:
+class CarAgr {
+ public:
   Vehicle *vehicle;
 
   CarAgr(double weight, double speed, double milage, double burning);

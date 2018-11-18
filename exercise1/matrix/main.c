@@ -6,11 +6,10 @@
 
 #include <stdio.h>
 
-#include "matrix.h"
 #include "cli.h"
+#include "matrix.h"
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
   puts("Reading 1st matrix");
   Matrix *matrix1 = read_matrix();
   print_matrix(matrix1);

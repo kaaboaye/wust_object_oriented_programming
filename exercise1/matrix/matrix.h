@@ -4,8 +4,7 @@
 
 #include <stdint.h>
 
-typedef struct
-{
+typedef struct {
   uint64_t columns;
   uint64_t rows;
 

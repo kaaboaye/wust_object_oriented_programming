@@ -3,7 +3,4 @@
 BusInh::BusInh(double weight, double speed, double milage, double burning)
     : Vehicle(weight, speed, milage, burning) {}
 
-const char *BusInh::does()
-{
-  return "buuuu buuuu";
-}
+const char *BusInh::does() { return "buuuu buuuu"; }

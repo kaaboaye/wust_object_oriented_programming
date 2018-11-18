@@ -3,9 +3,8 @@
 
 #include "vehicle.h"
 
-class BusAgr
-{
-public:
+class BusAgr {
+ public:
   Vehicle *vehicle;
   ~BusAgr();
 

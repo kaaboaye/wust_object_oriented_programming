@@ -1,8 +1,7 @@
 #ifndef CLI_CLI_H
 #define CLI_CLI_H
 
-namespace Cli
-{
+namespace Cli {
 void main();
 }
 

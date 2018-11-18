@@ -2,11 +2,9 @@
 
 #include "vehicle_options.h"
 
-namespace cli
-{
+namespace cli {
 
-VehicleOptions read_vehicle_options()
-{
+VehicleOptions read_vehicle_options() {
   double weight;
   double speed;
   double milage;
@@ -31,4 +29,4 @@ VehicleOptions read_vehicle_options()
       burning,
   };
 }
-} // namespace cli
+}  // namespace cli
