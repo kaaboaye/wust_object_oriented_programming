@@ -6,7 +6,7 @@
 namespace vehicle {
 class Boat : virtual public Vehicle {
  public:
-  const char* sound() override;
+  const char* sound();
 };
 }  // namespace vehicle
 

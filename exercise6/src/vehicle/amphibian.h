@@ -5,7 +5,7 @@
 #include "car.h"
 
 namespace vehicle {
-class Amphibian : virtual public Car, virtual public Boat {
+class Amphibian : public Car, public Boat {
  public:
   const char *driving_sound();
   const char *floating_sound();

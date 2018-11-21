@@ -4,7 +4,7 @@
 namespace vehicle {
 class Vehicle {
  public:
-  virtual const char *sound() = 0;
+  const char *sound();
 };
 }  // namespace vehicle
 

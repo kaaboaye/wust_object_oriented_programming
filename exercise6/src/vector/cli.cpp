@@ -8,7 +8,8 @@
 namespace vector {
 
 static void help() {
-  std::cout << "vector commands" << std::endl
+  std::cout << std::endl
+            << "vector commands" << std::endl
             << "v1 1 2 … 4 end" << std::endl
             << "v2 1 2 … 4 end" << std::endl
             << "dot_product" << std::endl
@@ -17,14 +18,14 @@ static void help() {
 }
 
 static SpareVector* read_vector() {
-  // std::string entry;
-  // SpareVector* vec = new SpareVector();
+  std::string entry;
+  SpareVector* vec = new SpareVector();
 
-  // for (std::cin >> entry; entry != "end"; std::cin >> entry) {
-  //   vec->push(std::stol(entry));
-  // }
+  for (std::cin >> entry; entry != "end"; std::cin >> entry) {
+    vec->push(std::stol(entry));
+  }
 
-  // return vec;
+  return vec;
 }
 
 void main() {
@@ -32,7 +33,10 @@ void main() {
   SpareVector* v1 = nullptr;
   SpareVector* v2 = nullptr;
 
+  help();
+
   for (;;) {
+    std::cout << "> ";
     std::cin >> s_cmd;
     CliCommands::t cmd = CliCommands::parse(s_cmd);
 
@@ -53,9 +57,16 @@ void main() {
         v2 = read_vector();
         break;
 
-      case CliCommands::dot_product:
-        std::cout << SpareVector::dot_product(*v1, *v2);
+      case CliCommands::dot_product: {
+        auto [status, result] = SpareVector::dot_product(v1, v2);
+        if (status == "ok") {
+          std::cout << "dot_product: " << result << std::endl;
+        } else {
+          std::cout << status << std::endl;
+        }
+
         break;
+      }
 
       case CliCommands::help:
         help();

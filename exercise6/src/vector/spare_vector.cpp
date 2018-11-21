@@ -4,17 +4,25 @@
 
 namespace vector {
 
-int64_t SpareVector::dot_product(SpareVector &v1, SpareVector &v2) {
-  auto order1 = v1.order.begin();
-  auto values1 = v1.order.begin();
+std::tuple<std::string, int64_t> SpareVector::dot_product(SpareVector *v1,
+                                                          SpareVector *v2) {
+  if (!v1 || !v2) {
+    return std::make_tuple("You have to create both vectors ~~grrr~~", 0);
+  }
 
-  auto order2 = v2.order.begin();
-  auto values2 = v2.values.begin();
+  if (v1->order.size() != v2->order.size()) {
+    return std::make_tuple("error vectors has different sizes", 0);
+  }
+
+  auto order1 = v1->order.begin();
+  auto values1 = v1->values.begin();
+
+  auto order2 = v2->order.begin();
+  auto values2 = v2->values.begin();
 
   int64_t accumulator = 0;
 
-  for (; order1 != v1.order.end() && order2 != v2.order.end();
-       order1++, order2++) {
+  for (; order1 != v1->order.end(); order1++, order2++) {
     // /
     if (*order1 && *order2) {
       accumulator += *values1 * *values2;
@@ -29,7 +37,7 @@ int64_t SpareVector::dot_product(SpareVector &v1, SpareVector &v2) {
     }
   }
 
-  return accumulator;
+  return std::make_tuple("ok", accumulator);
 }
 
 void SpareVector::push(int64_t val) {
