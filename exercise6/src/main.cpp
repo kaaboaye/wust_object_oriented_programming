@@ -10,6 +10,12 @@ int main() {
     vehicle::Amphibian a;
     printf("driving_sound: %s\n", a.driving_sound());
     printf("floating_sound: %s\n", a.floating_sound());
+    puts(a.Car::sound());
+  }
+
+  {
+    vehicle::Car c;
+    puts(c.sound());
   }
 
   puts("\nbike");
