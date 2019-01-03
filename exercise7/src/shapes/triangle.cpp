@@ -3,7 +3,8 @@
 #include "triangle.h"
 
 namespace shapes {
-Triangle::Triangle(double a, double b, double c) {
+Triangle::Triangle(Shape2d::Position position, double a, double b, double c)
+    : Shape2d(position) {
   this->a = a;
   this->b = b;
   this->c = c;

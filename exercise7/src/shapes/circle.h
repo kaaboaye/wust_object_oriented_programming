@@ -8,7 +8,7 @@ class Circle : public Shape2d {
   double ray;
 
  public:
-  Circle(double ray);
+  Circle(Shape2d::Position position, double ray);
   double area() const override;
 };
 }  // namespace shapes

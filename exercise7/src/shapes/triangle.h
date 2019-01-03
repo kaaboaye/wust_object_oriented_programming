@@ -10,7 +10,7 @@ class Triangle : public Shape2d {
   double c;
 
  public:
-  Triangle(double a, double b, double c);
+  Triangle(Shape2d::Position position, double a, double b, double c);
   double area() const override;
 };
 }  // namespace shapes

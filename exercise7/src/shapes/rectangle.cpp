@@ -1,7 +1,8 @@
 #include "rectangle.h"
 
 namespace shapes {
-Rectangle::Rectangle(double length, double height) {
+Rectangle::Rectangle(Shape2d::Position position, double length, double height)
+    : Shape2d(position) {
   this->length = length;
   this->height = height;
 }

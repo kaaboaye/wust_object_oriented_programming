@@ -18,7 +18,11 @@
     "type_traits": "cpp",
     "typeinfo": "cpp",
     "algorithm": "cpp",
-    "unordered_map": "cpp"
+    "unordered_map": "cpp",
+    "string": "cpp",
+    "hashtable": "cpp",
+    "utility": "cpp",
+    "regex": "cpp"
   },
   "cSpell.words": ["urange"]
 }

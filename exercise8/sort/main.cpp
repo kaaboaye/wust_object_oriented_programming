@@ -1,11 +1,12 @@
 #include <stdio.h>
-#include <stdlib.h>
+#include <algorithm>
 #include <sstream>
 #include <string>
+#include <vector>
 
 template <typename T>
-void sort(T *arr, size_t n, int cmp(const T *, const T *)) {
-  qsort(arr, n, sizeof(T), (int (*_Nonnull)(const void *, const void *))cmp);
+void sort(std::vector<T> vec, bool &cmp(T, T)) {
+  std::sort(vec.begin(), vec.end(), cmp);
 }
 
 struct Point {
@@ -20,36 +21,32 @@ struct Point {
 };
 
 int main() {
-  Point points[] = {
+  std::vector<Point> points = {
       {2, 1},
       {3, 3},
-      {1, 3},
+      {1, 2},
   };
-  size_t points_n = 3;
 
   puts("original");
 
-  for (int i = 0; i < points_n; ++i) {
+  for (int i = 0; i < points.size(); ++i) {
     puts(points[i].to_string().c_str());
   }
 
   puts("\nby x");
 
-  sort<Point>(points, points_n, [](const Point *a, const Point *b) {
-    return (int)(a->x - b->x);
-  });
+  sort<Point>(points, [](Point a, Point b) { return a.x > b.x; });
 
-  for (int i = 0; i < points_n; ++i) {
+  for (int i = 0; i < points.size(); ++i) {
     puts(points[i].to_string().c_str());
   }
 
   puts("\nby y");
 
-  sort<Point>(points, points_n, [](const Point *a, const Point *b) {
-    return (int)(a->y - b->y);
-  });
+  std::sort(points.begin(), points.end(),
+            [](Point a, Point b) { return a.y > b.y; });
 
-  for (int i = 0; i < points_n; ++i) {
+  for (int i = 0; i < points.size(); ++i) {
     puts(points[i].to_string().c_str());
   }
 

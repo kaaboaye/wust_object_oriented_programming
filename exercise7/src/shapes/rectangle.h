@@ -9,7 +9,7 @@ class Rectangle : public Shape2d {
   double height;
 
  public:
-  Rectangle(double length, double height);
+  Rectangle(Shape2d::Position position, double length, double height);
   double area() const override;
 };
 }  // namespace shapes

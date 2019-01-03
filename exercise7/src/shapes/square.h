@@ -8,7 +8,7 @@ class Square : public Shape2d {
   double length;
 
  public:
-  Square(double length);
+  Square(Shape2d::Position position, double length);
   double area() const override;
 };
 }  // namespace shapes
