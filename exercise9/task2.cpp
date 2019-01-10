@@ -9,7 +9,7 @@ std::ifstream in_text("in_text.txt");
 std::ofstream out_key("out_key.txt");
 std::ofstream out_text("out_text.txt");
 
-char parse_char(char c) { return abs(c - 'a') % ('z' - 'a'); }
+#define parse_char(c) (abs(c - 'a') % ('z' - 'a'))
 #define dump(c) ((char)(c + 'a'))
 
 char get_next_key_char() {
