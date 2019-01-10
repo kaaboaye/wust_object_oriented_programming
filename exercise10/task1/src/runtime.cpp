@@ -83,7 +83,7 @@ compiler::token_t evaluate(compiler::token_t token_a, compiler::token_t token_b,
       return number_to_token(a / b);
 
     case compiler::token_t::e_pow:
-      return number_to_token(pow(a, b));
+      return number_to_token(pow(b, a));
 
     default:
       lib::assert_never("wtf this should never happen");
