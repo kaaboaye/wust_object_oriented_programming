@@ -25,7 +25,9 @@
     "regex": "cpp",
     "vector": "cpp",
     "optional": "cpp",
-    "variant": "cpp"
+    "variant": "cpp",
+    "chrono": "cpp",
+    "complex": "cpp"
   },
   "cSpell.words": ["urange"]
 }
