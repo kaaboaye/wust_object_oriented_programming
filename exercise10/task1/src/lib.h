@@ -2,15 +2,29 @@
 #define LIB_H
 
 #include <deque>
+#include <string>
 #include <tuple>
 
 namespace symbol {
-enum t { ok, error, empty, not_found, brackets_error };
+enum t { __null__, ok, error, empty, not_found, brackets_error };
 }  // namespace symbol
 
 namespace lib {
-class AssertNeverException {};
-void assert_never();
+
+class AssertNeverException {
+ public:
+  const std::string message;
+
+  AssertNeverException(const std::string& message);
+};
+void assert_never(std::string message);
+
+template <typename Collection, typename Action>
+void each(const Collection& in, const Action&& action) {
+  for (const auto& elem : in) {
+    action(elem);
+  }
+}
 
 template <typename CollectionIn, typename CollectionOut,
           typename Transformation>

@@ -51,6 +51,7 @@ std::tuple<symbol::t, line_t> compile_line(line_t line) {
   for (auto token : line) {
     switch (token.type) {
       case token_t::e_number:
+      case token_t::e_symbol:
         out.push_back(token);
         break;
 
@@ -83,12 +84,13 @@ std::tuple<symbol::t, line_t> compile_line(line_t line) {
             continue;
           }
 
-          lib::assert_never();
+          lib::assert_never("error during bracket compilation");
         }
         break;
       }
 
       default:
+        lib::assert_never("unexpected token");
         break;
     }
   }

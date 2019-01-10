@@ -27,9 +27,3 @@ compiler::bytecode_t lex(std::string source_code) {
   return lines;
 }
 }  // namespace lexer
-
-// 12 + a * (b * c + d / e)
-// 12 + 1 * (2 * 3 + 4 / 5)
-
-// 12 a b c * d e / + * +
-// 12 1 2 3 * 4 5 / + * +

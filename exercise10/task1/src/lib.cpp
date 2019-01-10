@@ -1,5 +1,10 @@
 #include "lib.h"
 
 namespace lib {
-void assert_never() { throw new AssertNeverException(); }
+AssertNeverException::AssertNeverException(const std::string& message)
+    : message(message){};
+
+void assert_never(std::string message) {
+  throw new AssertNeverException(message);
+}
 }  // namespace lib
