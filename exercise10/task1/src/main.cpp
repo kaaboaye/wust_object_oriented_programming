@@ -5,7 +5,7 @@
 int main(int argc, char const *argv[]) {
   std::string source_code(std::istreambuf_iterator<char>(std::cin), {});
 
-  auto bytecode = compiler::lex(source_code);
+  auto [errors, bytecode] = compiler::compile(source_code);
 
   for (auto line : bytecode) {
     for (auto token : line) {

@@ -2,10 +2,11 @@
 #define STACK_H
 
 #include <tuple>
-#include "symbol.h"
+#include "lib.h"
+namespace lib {
 
 template <typename T>
-class Stack {
+class stack {
   struct node_t {
     T val;
     node_t *prev;
@@ -19,7 +20,7 @@ class Stack {
   node_t *head;
 
  public:
-  Stack() { head = nullptr; }
+  stack() { head = nullptr; }
 
   void push(T val) {
     node_t *el = new node_t(val);
@@ -45,5 +46,6 @@ class Stack {
     return std::make_tuple(symbol::ok, val);
   }
 };
+}  // namespace lib
 
 #endif

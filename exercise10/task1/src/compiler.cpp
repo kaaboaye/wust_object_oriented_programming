@@ -1,74 +1,104 @@
-#include "compiler.h"
 #include <algorithm>
+#include <tuple>
+
+#include "compiler.h"
+#include "lexer.h"
+#include "lib.h"
 #include "stack.hh"
-#include "symbol.h"
 
 namespace compiler {
 
-bytecode_t lex(std::string source_code) {
-  lexertk::generator generator;
+std::tuple<symbol::t, line_t> compile_line(line_t line);
 
-  if (!generator.process(source_code)) {
-    throw "Failed to lex";
-  }
+typedef std::deque<std::tuple<symbol::t, line_t>>
+    compiled_lines_with_statuses_t;
 
-  // meke it cpp-able
-  line_t tokens;
-  for (std::size_t i = 0; i < generator.size(); ++i) {
-    tokens.push_back(generator[i]);
-  }
+std::tuple<std::deque<symbol::t>, bytecode_t> compile(std::string source_code) {
+  const auto lexcode = lexer::lex(source_code);
 
-  bytecode_t lines;
+  const auto compiled_lines_with_statuses =
+      lib::map<bytecode_t, compiled_lines_with_statuses_t>(lexcode,
+                                                           compile_line);
 
-  {
-    std::vector<lexertk::token> line;
-    for (auto &t : tokens) {
-      if (t.type == lexertk::token::e_eof) {
-        lines.push_back(line);
-        line.clear();
-      } else {
-        line.push_back(t);
-      }
-    }
-  }
+  const auto broken_lines =
+      lib::filter(compiled_lines_with_statuses,
+                  [](const std::tuple<symbol::t, line_t> &tuple) {
+                    auto [status, _line] = tuple;
+                    return status != symbol::ok;
+                  });
 
-  return lines;
+  const auto errors =
+      lib::map<compiled_lines_with_statuses_t, std::deque<symbol::t>>(
+          broken_lines, [](const std::tuple<symbol::t, line_t> &tuple) {
+            auto [status, _line] = tuple;
+            return status;
+          });
+
+  const auto bytecode = lib::map<compiled_lines_with_statuses_t, bytecode_t>(
+      compiled_lines_with_statuses,
+      [](const std::tuple<symbol::t, line_t> &tuple) {
+        auto [_status, line] = tuple;
+        return line;
+      });
+
+  return std::make_tuple(errors, bytecode);
 }
 
-bytecode_t compile(const bytecode_t &bytecode) {
-  std::transform(bytecode.begin(), bytecode.end(), bytecode.begin(),
-                 compile_line);
-  return bytecode;
-}
-
-line_t compile_line(line_t line) {
-  Stack<lexertk::token> stack;
+std::tuple<symbol::t, line_t> compile_line(line_t line) {
+  lib::stack<token_t> stack;
   line_t out;
 
   for (auto token : line) {
     switch (token.type) {
-      case lexertk::token::e_number:
+      case token_t::e_number:
         out.push_back(token);
         break;
 
-      case lexertk::token::e_add:
-      case lexertk::token::e_sub:
-      case lexertk::token::e_mul:
-      case lexertk::token::e_div:
-      case lexertk::token::e_lbracket:
+      case token_t::e_add:
+      case token_t::e_sub:
+      case token_t::e_mul:
+      case token_t::e_div:
+      case token_t::e_pow:
+      case token_t::e_lbracket:
         stack.push(token);
         break;
 
-      case lexertk::token::e_rbracket:
-        for (auto [is_ok, stack_token] = stack.pop();
-             is_ok == symbol::ok &&
-             stack_token.type != lexertk::token::e_lbracket;
-             std::tie(is_ok, stack_token) = stack.pop()) {
-          out.push_back(stack_token);
+      case token_t::e_rbracket: {
+        symbol::t status;
+        token_t stack_token;
+
+        for (;;) {
+          std::tie(status, stack_token) = stack.pop();
+
+          if (status == symbol::empty) {
+            return std::make_tuple(symbol::brackets_error, out);
+          }
+
+          if (stack_token.type == token_t::e_lbracket) {
+            break;
+          }
+
+          if (status == symbol::ok) {
+            out.push_back(token);
+            continue;
+          }
+
+          lib::assert_never();
         }
+        break;
+      }
+
+      default:
         break;
     }
   }
+
+  for (auto [status, stack_item] = stack.pop(); status == symbol::ok;
+       std::tie(status, stack_item) = stack.pop()) {
+    out.push_back(stack_item);
+  }
+
+  return std::make_tuple(symbol::ok, out);
 }
 
 }  // namespace compiler
