@@ -22,7 +22,10 @@
     "string": "cpp",
     "hashtable": "cpp",
     "utility": "cpp",
-    "regex": "cpp"
+    "regex": "cpp",
+    "vector": "cpp",
+    "optional": "cpp",
+    "variant": "cpp"
   },
   "cSpell.words": ["urange"]
 }
