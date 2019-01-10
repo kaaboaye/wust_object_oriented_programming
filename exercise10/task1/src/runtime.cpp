@@ -58,7 +58,7 @@ void run_line(compiler::line_t line) {
 
   const auto [is_something_else, nothing] = stack.pop();
   if (is_result == symbol::ok) {
-    std::cout << nothing.value << " : " << lexertk::token::to_str(nothing.type)
+    std::cout << lexertk::token::to_str(nothing.type) << " : " << nothing.value
               << std::endl;
     lib::assert_never("something is on stack :O ");
   }
