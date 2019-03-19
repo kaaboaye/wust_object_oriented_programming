@@ -6,7 +6,15 @@
 #include <tuple>
 
 namespace symbol {
-enum t { __null__, ok, error, empty, not_found, brackets_error };
+enum t {
+  __null__,
+  ok,
+  error,
+  empty,
+  not_found,
+  brackets_error,
+  unexpected_token
+};
 }  // namespace symbol
 
 namespace lib {

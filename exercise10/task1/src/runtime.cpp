@@ -51,17 +51,16 @@ void run_line(compiler::line_t line) {
 
   const auto [is_result, result] = stack.pop();
   if (is_result != symbol::ok) {
-    lib::assert_never("wtf no result?");
+    std::cout << "(empty expression)" << std::endl;
+    return;
   }
 
   std::cout << result.value << std::endl;
 
-  const auto [is_something_else, nothing] = stack.pop();
-  if (is_result == symbol::ok) {
-    std::cout << lexertk::token::to_str(nothing.type) << " : " << nothing.value
-              << std::endl;
-    lib::assert_never("something is on stack :O ");
-  }
+  // const auto [is_something_else, nothing] = stack.pop();
+  // if (is_result != symbol::empty) {
+  //   lib::assert_never("something is on stack :O ");
+  // }
 }
 
 compiler::token_t evaluate(compiler::token_t token_a, compiler::token_t token_b,
@@ -87,7 +86,7 @@ compiler::token_t evaluate(compiler::token_t token_a, compiler::token_t token_b,
 
     default:
       lib::assert_never("wtf this should never happen");
-      return compiler::token_t();
+      throw "cpp elo stupito";
   }
 }
 

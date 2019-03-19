@@ -41,7 +41,7 @@ int main(int argc, char const *argv[]) {
   stud = new Student("Wojciech", "Ponury", 0xDEADC0DE, 2);
 
   try {
-    stud = new Student("Wojciech kocham", "Ponury", 0xDEADC0DE, 2);
+    stud = new Student("Wojciech :#", "Ponury", 0xDEADC0DE, 2);
   } catch (BadFirstNameException *) {
     std::cout << "BadFirstNameException" << std::endl;
   }

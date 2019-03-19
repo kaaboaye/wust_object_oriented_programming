@@ -27,7 +27,8 @@
     "optional": "cpp",
     "variant": "cpp",
     "chrono": "cpp",
-    "complex": "cpp"
+    "complex": "cpp",
+    "forward_list": "cpp"
   },
   "cSpell.words": ["urange"]
 }

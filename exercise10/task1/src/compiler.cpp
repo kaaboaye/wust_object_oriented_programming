@@ -65,11 +65,8 @@ std::tuple<symbol::t, line_t> compile_line(line_t line) {
         break;
 
       case token_t::e_rbracket: {
-        symbol::t status;
-        token_t stack_token;
-
         for (;;) {
-          std::tie(status, stack_token) = stack.pop();
+          const auto [status, stack_token] = stack.pop();
 
           if (status == symbol::empty) {
             return std::make_tuple(symbol::brackets_error, out);
@@ -80,7 +77,7 @@ std::tuple<symbol::t, line_t> compile_line(line_t line) {
           }
 
           if (status == symbol::ok) {
-            out.push_back(token);
+            out.push_back(stack_token);
             continue;
           }
 
@@ -90,8 +87,7 @@ std::tuple<symbol::t, line_t> compile_line(line_t line) {
       }
 
       default:
-        lib::assert_never("unexpected token");
-        break;
+        return std::make_tuple(symbol::unexpected_token, out);
     }
   }
 
